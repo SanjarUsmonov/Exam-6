@@ -9,5 +9,5 @@ CREATE TABLE users(
     user_username VARCHAR(32) NOT NULL,
     user_password VARCHAR(32),
     user_created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    user_is_do boolean
+    user_status boolean
 );

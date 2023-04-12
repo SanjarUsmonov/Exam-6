@@ -8,6 +8,7 @@ const {
   getUserByDate,
   updateUser,
   deleUser,
+  updateUserStatus,
 } = require("../controllers/users/users");
 
 const router = Router();
@@ -19,5 +20,6 @@ router.get(["/limit", "/limit/:id"], getUserByLimit);
 router.get(["/date", "/date/:date"], getUserByDate);
 router.put("/put/:id", updateUser);
 router.delete("/del/:id", deleUser);
+router.put("/status/:id", updateUserStatus);
 
 module.exports = router;

@@ -11,6 +11,9 @@ const updateUser =
   "UPDATE users set user_username=$1, user_password=$2, user_is_do=$3 where user_id=$4 RETURNING*";
 const deleUser = "DELETE from users where user_id=$1";
 
+const updateUserStatus =
+  "UPDATE users set user_status=$1 where user_id=$2 RETURNING*";
+
 const postUserFetch = (username, password, isDo) =>
   fetch(postUser, username, password, isDo);
 const getAllUsersFetch = () => fetch(getAllUsers);
@@ -22,6 +25,8 @@ const getUserByDateFetch = (fromDate, toDate) =>
 const updateUserFetch = (username, password, isDo, id) =>
   fetch(updateUser, username, password, isDo, id);
 const deleUserFetch = (id) => fetch(deleUser, id);
+const updateUserStatusFetch = (status, id) =>
+  fetch(updateUserStatus, status, id);
 
 module.exports = {
   postUserFetch,
@@ -31,4 +36,5 @@ module.exports = {
   getUserByDateFetch,
   updateUserFetch,
   deleUserFetch,
+  updateUserStatusFetch,
 };

@@ -6,6 +6,7 @@ const {
   getUserByDateFetch,
   updateUserFetch,
   deleUserFetch,
+  updateUserStatusFetch,
 } = require("./model");
 
 const postUser = async (req, res) => {
@@ -50,6 +51,13 @@ const getUserByDate = async (req, res) => {
   res.status(200).json({ user });
 };
 
+const updateUserStatus = async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+  const user = await updateUserStatusFetch(status, id);
+  res.status(200).json({ user });
+};
+
 module.exports = {
   postUser,
   getAllUser,
@@ -58,4 +66,5 @@ module.exports = {
   getUserByDate,
   updateUser,
   deleUser,
+  updateUserStatus,
 };
