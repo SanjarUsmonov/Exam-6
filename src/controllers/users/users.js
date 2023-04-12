@@ -25,8 +25,9 @@ const getUserById = async (req, res) => {
 };
 
 const getUserByLimit = async (req, res) => {
-  const { id } = req.query;
-  console.log(id);
+  const { offset, limit } = req.query;
+  const user = await getUserByLimitFetch(offset, limit);
+  res.status(200).json({ user });
 };
 
 const updateUser = async (req, res) => {
