@@ -5,6 +5,7 @@ const {
   getAllUser,
   getUserById,
   getUserByLimit,
+  getUserByDate,
   updateUser,
   deleUser,
 } = require("../controllers/users/users");
@@ -15,6 +16,7 @@ router.post("/post", postUser);
 router.get("/get", getAllUser);
 router.get("/get/:id", getUserById);
 router.get(["/limit", "/limit/:id"], getUserByLimit);
+router.get(["/date", "/date/:date"], getUserByDate);
 router.put("/put/:id", updateUser);
 router.delete("/del/:id", deleUser);
 

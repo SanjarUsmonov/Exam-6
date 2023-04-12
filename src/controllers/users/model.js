@@ -5,7 +5,8 @@ const postUser =
 const getAllUsers = "SELECT * from users";
 const getUserById = "SELECT * from users where user_id=$1";
 const getUserByLimit = "SELECT * from users offset $1 limit $2";
-const getUserBydate = "SELECT * from user ";
+const getUserByDate =
+  "SELECT * from users where user_created_at between '$1' and '$2'";
 const updateUser =
   "UPDATE users set user_username=$1, user_password=$2, user_is_do=$3 where user_id=$4 RETURNING*";
 const deleUser = "DELETE from users where user_id=$1";
@@ -16,6 +17,8 @@ const getAllUsersFetch = () => fetch(getAllUsers);
 const getUserByIdFetch = (id) => fetch(getUserById, id);
 const getUserByLimitFetch = (offset, limit) =>
   fetch(getUserByLimit, offset, limit);
+const getUserByDateFetch = (fromDate, toDate) =>
+  fetch(getUserByDate, fromDate, toDate);
 const updateUserFetch = (username, password, isDo, id) =>
   fetch(updateUser, username, password, isDo, id);
 const deleUserFetch = (id) => fetch(deleUser, id);
@@ -25,6 +28,7 @@ module.exports = {
   getAllUsersFetch,
   getUserByIdFetch,
   getUserByLimitFetch,
+  getUserByDateFetch,
   updateUserFetch,
   deleUserFetch,
 };

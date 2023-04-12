@@ -3,6 +3,7 @@ const {
   getAllUsersFetch,
   getUserByIdFetch,
   getUserByLimitFetch,
+  getUserByDateFetch,
   updateUserFetch,
   deleUserFetch,
 } = require("./model");
@@ -42,11 +43,19 @@ const deleUser = async (req, res) => {
   await deleUserFetch(id);
   res.status(200).json({ message: "User deleted" });
 };
+
+const getUserByDate = async (req, res) => {
+  const { fromDate, toDate } = req.query;
+  const user = await getUserByDateFetch(fromDate, toDate);
+  res.status(200).json({ user });
+};
+
 module.exports = {
   postUser,
   getAllUser,
   getUserById,
   getUserByLimit,
+  getUserByDate,
   updateUser,
   deleUser,
 };
